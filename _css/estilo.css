@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700&display=swap');
+
+body { overflow-x: hidden; font-family: 'Red Hat Text', sans-serif; }
+h1, h2, h3, h4 { font-family: 'Red Hat Display', sans-serif; }
+
+@media only screen and (max-width: 900px){
+    .nav-item, .nav-link {
+        color: black !important;
+    }
+}
+
+.text-primeira { color: #262c5f !important; }
+.text-segunda { color: #f07f19 !important; }
+
+.bg-primeira { background-color: #262c5f !important; }
+.bg-segunda { background-color: #f07f19 !important; }
+.bg-terceira { background-color: #b3cdf9 !important; display: in}
+
+
+.btn-primeira { color: white; background: #262c5f !important; }
+.btn-primeira:hover { color: black; background: #f07f19 !important; }
+
+.btn-segunda { color: #f07f19; border: 1px solid #f07f19 !important; }
+.btn-segunda:hover { color: black; background: #f07f19 !important; }
+
+footer ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+footer hr { border: 1px solid white; }
+
+footer #direitos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+footer a { color: white; text-decoration: none; }
+footer a:hover { color: #f07f19; }
