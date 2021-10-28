@@ -82,30 +82,20 @@
     </div>
     <main class="container py-3">
         <div class="row">
-            <form action="" method="post" class="col-sm-12 col-md-6 col-lg-4">
-                <h2 class="h4 text-primeira">Escolha as vagas que te interessam</h2>
-                <?php 
-                    $consultar_categoria = mysqli_query($conexao, "SELECT * FROM categoria ORDER BY id_categoria ASC");
-                    if(mysqli_num_rows($consultar_categoria) > 0) {
-                        while($categoria = mysqli_fetch_array($consultar_categoria)) {
-                ?>
-                    <input type="checkbox" class="btn-check" id="<?php echo $categoria['id_categoria']; ?>" autocomplete="off">
-                    <label class="btn btn-outline-primary" for="<?php echo $categoria['id_categoria']; ?>"><?php echo $categoria['nome_categoria']; ?></label>
-                <?php } } ?>
-            </form>
-            <div class="col-sm-12 col-md-6 col-lg-8">
-                <h2 class="mb-3 text-primeira">Vagas de acordo ao seu perfil</h2>
-                <?php 
-                    $cons_vaga = mysqli_query($conexao, "SELECT * FROM vaga AS V INNER JOIN empregadora AS E ON V.cod_empregadora = E.id_empregadora LIMIT 5");
-                    if(mysqli_num_rows($cons_vaga) > 0) {
-                        while($vaga_recente = mysqli_fetch_array($cons_vaga)) {
-                ?>
-                <div class="col-12 mb-2">
-                    <p class="h5 text-primeira"><?php echo $vaga_recente['nome_vaga']; ?></p>
-                    <p><?php echo $vaga_recente['nome']; ?></p>
-                </div>
-                <?php } } ?>
-            </div>            
+            <h2 class="my-3 text-primeira">Vagas de acordo ao seu perfil</h2>
+            <?php 
+                $cons_vaga = mysqli_query($conexao, "SELECT * FROM vaga AS V INNER JOIN empregadora AS E ON V.cod_empregadora = E.id_empregadora LIMIT 5");
+                if(mysqli_num_rows($cons_vaga) > 0) {
+                    while($vaga_recente = mysqli_fetch_array($cons_vaga)) {
+            ?>
+            <div class="col-sm-12 col-lg-6 mb-2">
+                <hr>
+                <p class="h4 text-primeira"><?php echo $vaga_recente['nome_vaga']; ?></p>
+                <p>Descrição: <?php echo $vaga_recente['descricao']; ?></p>
+                <p>Nome da empregadora: <strong><?php echo $vaga_recente['nome']; ?></strong> <br> Apresentação: <?php echo $vaga_recente['apresentacao']; ?></p>
+                <p><?php echo $vaga_recente['r10_provincia'] . ", " . $vaga_recente['r11_municipio']; ?></p>
+            </div>
+            <?php } } ?>         
         </div>
     </main>
 
