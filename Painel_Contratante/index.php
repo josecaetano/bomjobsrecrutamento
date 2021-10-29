@@ -61,12 +61,12 @@
         </div>
     </div>
     <main>
-        <div class="container my-4 text-center">
+        <div class="container my-2 text-center">
             <h3>Empregadoras Existentes</h3>
             <div >
                 <p>Na concepção jurídica, do direito comercial, atividade empresarial, ou empresa, é uma atividade econômica exercida profissionalmente pelo empresário por meio da articulação dos fatores produtivos para a produção ou circulação de bens ou de serviços</p>
             </div>
-            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropContratante" class="btn btn-primeira my-3">Ver todas</button>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropContratante" class="btn btn-primeira my-2">Ver todas</button>
             <hr>
             <div class="row">
                 <div class="col-sm-12 col-md-4 my-2 card bg bg-terceira">
