@@ -39,7 +39,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../Minhas_vagas/">Minhas candidaturas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../Minhas_Vagas/">Minhas candidaturas</a></li>
                     <li class="nav-item"><a class="nav-link" href="../Vagas/">Todas vagas disponíveis</a></li>
                     <li class="nav-item"><a class="nav-link" href="../Perfil_Candidato/">Meu perfil</a></li>
                     <li class="nav-item"> <button class="nav-link btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Minha conta <i class="bi bi-arrow-down"></i></button> </li>

@@ -93,30 +93,32 @@
         </div>
         <div class="container my-4 text-center">
         <h3>Empregadoras existentes</h3>
-
+        <div >
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati sapiente esse consequatur laudantium nobis at, saepe maxime laborum reprehenderit, ex eaque dolorum illum doloremque culpa, dignissimos autem nemo ut fugit!</p>
+        </div>
         <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropContratante" class="btn btn-primeira my-3">Ver todas</button>
         <hr>
             <div class="row">
-                <div class="col-sm-12 col-md-4 my-3">
+                <div class="col-sm-12 col-md-4 my-2 card bg bg-terceira">
                     <h5>Empregadoras Recentes</h5>
+                            
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, nulla. Incidunt temporibus accusantium aliquam eaque, ducimus dolores, est id nobis a sequi molestiae perferendis, praesentium quia obcaecati nisi perspiciatis. Reiciendis.</p>
 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos aut vel molestias enim? Vitae voluptas rem hic ut ipsa recusandae excepturi voluptatibus architecto doloribus aut suscipit quisquam, eaque sunt sint!</p>
-
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropRecentes" class="btn btn-primeira my-3">Todas</button>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropRecentes" class="btn btn-primeira my-3">Ver</button>
                 </div>
-                <div class="col-sm-12 col-md-4 my-3">
+                <div class="col-sm-12 col-md-4 my-2 card bg bg-terceira">
                     <h5>Empregadoras em espera</h5>
 
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos aut vel molestias enim? Vitae voluptas rem hic ut ipsa recusandae excepturi voluptatibus architecto doloribus aut suscipit quisquam, eaque sunt sint!</p>
 
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropEspera" class="btn btn-primeira my-3">Todas</button>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropEspera" class="btn btn-primeira my-3">Ver</button>
                 </div>
-                <div class="col-sm-12 col-md-4 my-3">
-                    <h5>Empregadoras contradas</h5>
+                <div class="col-sm-12 col-md-4 my-2 card bg bg-terceira">
+                    <h5>Empregadoras contratadas</h5>
 
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos aut vel molestias enim? Vitae voluptas rem hic ut ipsa recusandae excepturi voluptatibus architecto doloribus aut suscipit quisquam, eaque sunt sint!</p>
 
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropContratadas" class="btn btn-primeira my-3">Todas</button>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropContratadas" class="btn btn-primeira my-3">Ver</button>
                 </div>
             </div>
         </div>
@@ -125,16 +127,38 @@
     <div class="modal fade" id="staticBackdropContratante" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen-xxl-down">
             <div class="modal-content">
-            <div class="modal-header bg bg-primeira text-white">
-                <h5 class="modal-title" id="staticBackdropLabel">TODAS EMPREGADORAS</h5>
-                <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, dolorum non. Rem eaque dignissimos harum animi deserunt, ad inventore consequatur nisi est ipsum sit assumenda enim saepe atque odio possimus.</p>
-            </div>
-            <div class="modal-footer bg bg-primeira">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-            </div>
+                <div class="modal-header bg bg-primeira text-white">
+                    <?php  $consult_empregadora = mysqli_query($conexao, "SELECT COUNT(id_empregadora) AS cont_empregadoras FROM empregadora");
+                        $num_empregadoras = mysqli_fetch_array($consult_empregadora);?>
+                    <h5 class="modal-title" id="staticBackdropLabel">TODAS EMPREGADORAS</h5>
+                    <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body card-body">
+                    <div class="row text-justyfi">
+                        <?php
+                            $consultar_empregos = mysqli_query($conexao, "SELECT * FROM vaga AS V INNER JOIN empregadora AS E ON V.cod_empregadora = E.id_empregadora");
+                            if(mysqli_num_rows($consultar_empregos) > 0) {
+                                while($emprego = mysqli_fetch_array($consultar_empregos)) {
+                        ?>
+                        <div class="col-sm-12 col-lg-2 my-2 card bg-terceira mx-0.5">
+                            <span><strong>VAGA: </strong><?php echo $emprego['nome_vaga']; ?></span><br>
+                            <span><strong>Tipo: </strong><?php echo $emprego['tipo_emprego']; ?></span><br>
+                            <span><strong>Disponível: </strong><?php echo $emprego['num_vagas']; ?> vagas.</span><br>
+                            <span><strong>Experiência: </strong><?php echo $emprego['r2_experiencia']; ?> anos.</span><br>
+                            <span><strong>Descrição: </strong><?php echo $emprego['descricao_vaga']; ?></span><br>
+                            <span><strong>Titulação: </strong><?php echo $emprego['r1_titulacao']; ?></span><br>
+                            <span><strong>Nacionalidade: </strong><?php echo $emprego['r3_nacionalidade']; ?></span><br>
+                            <span><strong>Publicada: </strong><?php echo $emprego['data_publicacao']; ?></span><br>
+                            <span><strong>Expiração: </strong><?php echo $emprego['data_expiracao']; ?></span><br>
+                            <p><strong>Empregadora: </strong><?php echo $emprego['nome']; ?></p>
+                        </div>
+                        <?php } } ?> 
+                    </div>
+                </div>
+                <div class="modal-footer bg bg-primeira text-white">
+                    <p>Total: <?php echo $num_empregadoras['cont_empregadoras']; ?></p>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                </div>
             </div>
         </div>
     </div>
@@ -143,52 +167,98 @@
     <div class="modal fade" id="staticBackdropRecentes" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-            <div class="modal-header bg bg-primeira text-white">
-                <h5 class="modal-title" id="staticBackdropLabel">EMPREGADORAS RECENTES</h5>
-                <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni sit, facilis molestias quisquam incidunt beatae totam? Nihil culpa illum deleniti, similique nesciunt vitae necessitatibus eveniet nobis, consequuntur ducimus delectus odit!</p>
-            </div>
-            <div class="modal-footer bg bg-primeira">
+                <div class="modal-header bg bg-primeira text-white">
+                    <?php  $consult_empregadora = mysqli_query($conexao, "SELECT COUNT(id_empregadora) AS cont_empregadoras FROM empregadora AS E WHERE (E.status = 0)");
+                        $num_empregadoras = mysqli_fetch_array($consult_empregadora);?>
+                    <h5 class="modal-title" id="staticBackdropLabel">EMPREGADORAS RECENTES: <?php echo $num_empregadoras['cont_empregadoras']; ?></h5>
+                    <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body row card-body">
+                    <?php
+                        $consultar_empregos = mysqli_query($conexao, "SELECT * FROM empregadora AS E WHERE (E.status = 0)");
+                        if(mysqli_num_rows($consultar_empregos) > 0) {
+                            while($emprego = mysqli_fetch_array($consultar_empregos)) {
+                    ?>
+                    <div class="col-sm-12 col-md-4 my-3 mx-2 card bg bg-terceira">
+                        <p><strong>Empregadora: </strong><?php echo $emprego['nome']; ?></p>
+                        <p><strong>Area de actuação: </strong><?php echo $emprego['area_actuacao']; ?></p>
+                        <p><strong>Descrição: </strong><?php echo $emprego['descricao']; ?></p>
+                        <p><strong>Localização: </strong><?php echo $emprego['localizacao']; ?></p>
+                        <p><strong>Telefone: </strong><?php echo $emprego['telefone']; ?></p>
+                        <p><strong>Email: </strong><?php echo $emprego['email']; ?></p>
+                    </div>
+                    <?php } } ?> 
+                </div>
+                <div class="modal-footer bg bg-primeira text-white">   
+                <p>Total: <?php echo $num_empregadoras['cont_empregadoras']; ?></p>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-            </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Empregadoras em espera -->
+    <!-- Modal Empregadoras Em Espera -->
     <div class="modal fade" id="staticBackdropEspera" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-            <div class="modal-header bg bg-primeira text-white">
-                <h5 class="modal-title" id="staticBackdropLabel">EMPREGADORAS EM ESPERA</h5>
-                <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ex accusamus quasi nulla fugiat laudantium iure exercitationem atque aut quo et, dolor adipisci delectus sit blanditiis quod commodi, repellendus natus.</p>
-            </div>
-            <div class="modal-footer bg bg-primeira">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-            </div>
+                <div class="modal-header bg bg-primeira text-white">
+                    <?php  $consult_empregadora = mysqli_query($conexao, "SELECT COUNT(id_empregadora) AS cont_empregadoras FROM empregadora WHERE (autorizacao is null)");
+                        $num_empregadoras = mysqli_fetch_array($consult_empregadora);?>
+
+                    <h5 class="modal-title" id="staticBackdropLabel">EMPREGADORAS EM ESPERA: <?php echo $num_empregadoras['cont_empregadoras']; ?></h5>
+                    <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body row card-body">
+                    <?php
+                        $consultar_empregos = mysqli_query($conexao, "SELECT * FROM empregadora WHERE (autorizacao is null)");
+                        if(mysqli_num_rows($consultar_empregos) > 0) {
+                            while($emprego = mysqli_fetch_array($consultar_empregos)) {
+                    ?>
+                    <div class="col-sm-12 col-md-4 my-3 mx-2 card bg bg-terceira">
+                        <p><strong>Empregadora: </strong><?php echo $emprego['nome']; ?></p>
+                        <p><strong>Area de actuação: </strong><?php echo $emprego['area_actuacao']; ?></p>
+                        <p><strong>Descrição: </strong><?php echo $emprego['descricao']; ?></p>
+                        <p><strong>Localização: </strong><?php echo $emprego['localizacao']; ?></p>
+                        <p><strong>Telefone: </strong><?php echo $emprego['telefone']; ?></p>
+                        <p><strong>Email: </strong><?php echo $emprego['email']; ?></p>
+                    </div>
+                    <?php } } ?> 
+                    <div class="modal-footer bg bg-primeira text-white">
+                        <p>Total: <?php echo $num_empregadoras['cont_empregadoras']; ?></p>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <!-- Modal Empregadoras Contradas -->
+    
+    <!-- Modal Empregadoras Contratadas -->
     <div class="modal fade" id="staticBackdropContratadas" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-            <div class="modal-header bg bg-primeira text-white">
-                <h5 class="modal-title" id="staticBackdropLabel">EMPREGADORAS CONTRADAS</h5>
-                <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum neque distinctio, laudantium tempore velit, ipsam dolorum minima sapiente incidunt eos libero ratione odio. Aliquid, laudantium! Magni omnis hic voluptates eaque?</p>
-            </div>
-            <div class="modal-footer bg bg-primeira">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-            </div>
+                <div class="modal-header bg bg-primeira text-white">
+                 <?php  $consult_empregadora = mysqli_query($conexao, "SELECT COUNT(id_empregadora) AS cont_empregadoras FROM empregadora WHERE (autorizacao > 0)"); $num_empregadoras = mysqli_fetch_array($consult_empregadora);?>
+
+                    <h5 class="modal-title" id="staticBackdropLabel">EMPREGADORAS CONTRATADAS: <?php echo $num_empregadoras['cont_empregadoras']; ?></h5>
+                    <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body row card-body">
+                    <?php
+                        $consultar_empregos = mysqli_query($conexao, "SELECT * FROM empregadora WHERE (autorizacao > 0)");
+                        if(mysqli_num_rows($consultar_empregos) > 0) {
+                            while($emprego = mysqli_fetch_array($consultar_empregos)) {
+                    ?>
+                    <div class="col-sm-12 col-md-4 my-3 mx-2 card bg bg-terceira">
+                        <p><strong>Empregadora: </strong><?php echo $emprego['nome']; ?></p>
+                        <p><strong>Número de vagas: </strong><?php echo $emprego['vagas_disponiveis']; ?></p>
+                        <p><strong>Data da assinatura: </strong><?php echo $emprego['data_contrato']; ?></p>
+                    </div>
+                    <?php } } ?> 
+                    <div class="modal-footer bg bg-primeira text-white">
+                        <p>Total: <?php echo $num_empregadoras['cont_empregadoras']; ?></p>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

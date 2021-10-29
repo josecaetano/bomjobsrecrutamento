@@ -8,6 +8,16 @@
     $id_admin = $_SESSION['Admin_Logado'];
     $consultar_admin = mysqli_query($conexao, "SELECT * FROM admin_bj WHERE id_admin = '{$id_admin}'");
     $admim = mysqli_fetch_array($consultar_admin);
+
+    $cons = mysqli_query($conexao, "SELECT id_vaga, data_expiracao FROM vaga");
+    if(mysqli_num_rows($cons) > 0){
+        while($vag = mysqli_fetch_array($cons)){
+            $id_vaga = $vag['id_vaga'];
+            if($vag['data_expiracao'] <= date('Y-m-d')){
+                $comando_actualizar = mysqli_query($conexao, "UPDATE vaga SET status_vaga = 0 WHERE id_vaga = '$id_vaga'");
+            }
+        }
+    }
 ?>
 <!doctype html>
 <html lang="pt">
@@ -69,7 +79,7 @@
             <form action="index.php" method="GET" class="row">
                 <div class="col-12 mb-1">
                     <label for="campo-pesquisa" class="form-label">Pesquisa por vagas</label>
-                    <input type="text" class="form-control" id="campo-pesquisa" name="pesquisa" placeholder="Pesquisa por titulo da vaga ou tipo" required>
+                    <input type="text" class="form-control" id="campo-pesquisa" name="pesquisa" placeholder="Pesquisa por nome da vaga ou tipo de vaga" required>
                 </div>
                 <div class="col-2">
                     <button type="submit" class="btn btn-dark mb-3">Pesquisar</button>
@@ -81,46 +91,63 @@
         </aside>
         <!-- Todas as vagas -->
         <section id="vagas" class="container my-4">
+            <?php   if(isset($_SESSION['error'])) { ?>
+            <div class="alert alert-danger" role="alert">
+                <?php    echo $_SESSION['error'];
+                    unset($_SESSION['error']); ?>
+            </div>
+            <?php   } ?>
+            <?php   if(isset($_SESSION['success'])) { ?>
+                <div class="alert alert-success" role="alert">
+                    <?php    echo $_SESSION['success'];
+                        unset($_SESSION['success']); ?>
+                </div>
+            <?php   } ?>
             <?php
                 //Buscando algumas vagas de emprego
-                $consulta = "SELECT * FROM vaga AS V INNER JOIN empregadora AS E ON V.cod_empregadora = E.id_empregadora ";
+                $consulta = "SELECT * FROM vaga AS V INNER JOIN empregadora AS E ON V.cod_empregadora = E.id_empregadora";
                 if(isset($_GET["pesquisa"])) {
                     $pesquisa = $_GET["pesquisa"];
-                    $consulta .= " WHERE (titulo_vaga LIKE '%{$pesquisa}%') OR (tipo_vaga LIKE '%{$pesquisa}%')";
+                    $consulta .= " WHERE (nome_vaga LIKE '%{$pesquisa}%') OR (tipo_emprego LIKE '%{$pesquisa}%')";
                 }
                 $consulta .= " ORDER BY id_vaga DESC LIMIT 10";
                 $resultado = mysqli_query($conexao, $consulta);
-                if(mysqli_num_rows($resultado) > 0):
-                    while($informacao = mysqli_fetch_array($resultado)):
+                if(mysqli_num_rows($resultado) > 0){
+                    while($informacao = mysqli_fetch_array($resultado)){
             ?>
                 <div class="row">
                     <div class="col-sm-12 col-md-5 col-lg-5">
                         <h4 class="h5">Informações</h4>
-                        <span class="text-segunda">Nome da vaga: <strong><?php echo $informacao['nome_vaga'] ?></strong></span> <br>
-                        <span>Descrição: <strong><?php echo $informacao['descricao_vaga'] ?></strong></span> <br> 
-                        <span>Número de vagas: <strong><?php echo $informacao['num_vagas'] ?></strong></span> <br> 
-                        <span>Empregadora: <strong><?php echo $informacao['nome'] ?></strong></span>
+                        <span class="text-primeira h6">Nome da vaga: <strong><?php echo $informacao['nome_vaga']; ?></strong></span> <br>
+                        <span>Descrição: <strong><?php echo $informacao['descricao_vaga']; ?></strong></span> <br> 
+                        <span>Número de vagas: <strong><?php echo $informacao['num_vagas']; ?></strong></span> <br> 
+                        <span>Empregadora: <strong><?php echo $informacao['nome']; ?></strong></span>
                     </div>
                     <div class="col-sm-12 col-md-5 col-lg-5">
                         <h4 class="h5">Outros</h4>
                         <span><strong>Tipo:</strong> <?php echo $informacao['tipo_emprego']; ?></span> <br>
-                        <span><strong>Data da publicação:</strong> <?php echo $informacao['data_publicacao'] ?></span> <br>
+                        <span><strong>Data da publicação:</strong> <?php echo $informacao['data_publicacao']; ?></span> <br>
                         <span><strong>Data do fim:</strong> <?php echo $informacao['data_expiracao']; ?></span>
                     </div>
                     <div class="col-sm-12 col-md-2 col-lg-2">
                         <?php if($informacao['status_vaga'] == 0) { ?>
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Inactiva</button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $informacao['id_vaga']; ?>">Inactiva</button>
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal<?php echo $informacao['id_vaga']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
-                                    <form action="../_bd/activar_vaga.php?codigo=<?php echo $informacao['id_vaga']; ?>" method="post" class="modal-content">
+                                    <form action="../_bd/activar_vaga.php" method="post" class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Activar vaga | <?php echo $informacao['id_vaga']; ?></h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            ...
+                                            <div>
+                                                <p>Nome da vaga: <strong><?php echo $informacao['nome_vaga']; ?></strong></p>
+                                                <p><?php echo $informacao['data_expiracao']; ?></p>
+                                                <input type="date" class="form-control" name="nova_data" id="nova_data" min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>">
+                                                <input type="hidden" name="codigo" value="<?php echo $informacao['id_vaga']; ?>">
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -135,8 +162,10 @@
                     </div>
                 </div>
             <?php
-                    endwhile;
-                endif;
+                    }
+                } else {
+                    echo "Nenhum resultado encontrado";
+                }
             ?>
         </section>
     </main>

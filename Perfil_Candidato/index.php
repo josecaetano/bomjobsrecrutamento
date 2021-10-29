@@ -39,7 +39,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="../Painel_Candidato/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../Minhas_vagas/">Minhas candidaturas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../Minhas_Vagas/">Minhas candidaturas</a></li>
                     <li class="nav-item"><a class="nav-link" href="../Vagas/">Todas vagas disponíveis</a></li>
                     <li class="nav-item"><a class="nav-link active" href="../Perfil_Candidato/">Meu perfil</a></li>
                     <li class="nav-item"> <button class="nav-link btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Minha conta <i class="bi bi-arrow-down"></i></button> </li>
@@ -230,8 +230,10 @@
                     </div>       
                     <!-- 1ª Experiência Profissional  -->
                     <?php 
+                    if($candidato['ep1_data_inicio'] != "" && $candidato['ep1_data_inicio'] != null) {
                         $dataInicio = explode("-", $candidato['ep1_data_inicio']);
                         $dataFim    = explode("-", $candidato['ep1_data_fim']);
+
                         $anoInicio = $dataInicio[0]; $mesInicio = $dataInicio[1]; $diaInicio = $dataInicio[2];
                         $anoFim = $dataFim[0]; $mesFim = $dataFim[1]; $diaFim = $dataFim[2];
                         $tempo1_ano = $anoFim - $anoInicio;
@@ -245,11 +247,11 @@
                             $tempo1_mes = $mesFim - $mesInicio;
                             if($tempo1_mes < 0) { $tempo1_mes = $tempo1_mes * (-1); } 
                         }
-                        
+                    }                        
                     ?>
                     <div class="row">
                         <div class="col-sm-12 col-lg-4">
-                            <p><strong>Tempo de trabalho <br> </strong><?php if($tempo1_ano == 0) { echo $tempo1_mes ." mes(es)"; } else { echo $tempo1_ano ." ano(s)"; }?></p>
+                            <p><strong>Tempo de trabalho <br> </strong><?php if(isset($tempo1_ano)){ if($tempo1_ano == 0) { echo $tempo1_mes ." mes(es)"; } else { echo $tempo1_ano ." ano(s)"; }} ?></p>
                         </div>
                         <div class="col-sm-12 col-lg-4">
                             <p><strong>Nome da Empresa</strong> <br> <?php echo $candidato['ep1_empregadora']; ?></p>
@@ -909,15 +911,15 @@
                     <div class="modal-body row">
                         <div class="col-sm-12 col-lg-5 my-2">
                             <label for="ep1_empregadora" class="form-label">Nome da Empregadora</label>
-                            <input type="text" class="form-control" id="ep1_empregadora" name="ep1_empregadora" placeholder="" value="<?php echo $candidato['ep1_empregadora']; ?>">
+                            <input type="text" class="form-control" id="ep1_empregadora" name="ep1_empregadora" value="<?php echo $candidato['ep1_empregadora']; ?>">
                         </div>
                         <div class="col-sm-12 col-lg-4 my-2">
                             <label for="ep1_funcao" class="form-label">Função</label>
-                            <input type="text" class="form-control" id="ep1_funcao" name="ep1_funcao" placeholder="" value="<?php echo $candidato['ep1_funcao']; ?>">
+                            <input type="text" class="form-control" id="ep1_funcao" name="ep1_funcao" value="<?php echo $candidato['ep1_funcao']; ?>">
                         </div>
                         <div class="col-sm-12 col-lg-3 my-2">
                             <label for="ep1_data_inicio" class="form-label">De</label>
-                            <input type="date" class="form-control" id="ep1_data_inicio" name="ep1_data_inicio" placeholder="" value="<?php echo $candidato['ep1_data_inicio']; ?>">
+                            <input type="date" class="form-control" id="ep1_data_inicio" name="ep1_data_inicio" value="<?php echo $candidato['ep1_data_inicio']; ?>">
                         </div>
                         <div class="col-sm-12 col-lg-9 my-2">
                             <label for="ep1_descricao" class="form-label">Descrição</label>
@@ -937,11 +939,11 @@
                         <div class="collapse row" id="collapseEsperiencia2">
                             <div class="col-sm-12 col-lg-5 my-2">
                                 <label for="ep2_empregadora" class="form-label">Nome da Empregadora</label>
-                                <input type="text" class="form-control" id="ep2_empregadora" name="ep2_empregadora" placeholder="">
+                                <input type="text" class="form-control" id="ep2_empregadora" name="ep2_empregadora">
                             </div>
                             <div class="col-sm-12 col-lg-4 my-2">
                                 <label for="ep2_funcao" class="form-label">Função</label>
-                                <input type="text" class="form-control" id="ep2_funcao" name="ep2_funcao" placeholder="">
+                                <input type="text" class="form-control" id="ep2_funcao" name="ep2_funcao">
                             </div>
                             <div class="col-sm-12 col-lg-3 my-2">
                                 <label for="ep2_data_inicio" class="form-label">De</label>

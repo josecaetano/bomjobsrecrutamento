@@ -50,8 +50,6 @@
         } else {
             $_SESSION['success'] = "Dados editados com sucesso!";
         }
-    } else {
-        $_SESSION['error'] = "Erro ao editar os dados! Botão não clicado.";
     }
     header('Location: ../Perfil_Candidato/');
 ?>
