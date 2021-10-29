@@ -61,52 +61,64 @@
         </div>
     </div>
     <main>
-        <div class="Container">
-            <div class="row">
-                <div class="col-sm-12 col-md-7">
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                        <img src="../_img/capa.jpg" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                        <img src="../_img/capa.jpg" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                        <img src="../_img/capa.jpg" class="d-block w-100" alt="...">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>   
-                </div>
-                <div class="col-sm-12 col-md-5 my-2 text-center">
-                    <h4>Contratos e suas Claúsulas</4> 
-                </div>
-            </div>
-        </div>
         <div class="container my-4 text-center">
-        <h3>Empregadoras existentes</h3>
-        <div >
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati sapiente esse consequatur laudantium nobis at, saepe maxime laborum reprehenderit, ex eaque dolorum illum doloremque culpa, dignissimos autem nemo ut fugit!</p>
-        </div>
-        <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropContratante" class="btn btn-primeira my-3">Ver todas</button>
-        <hr>
+            <h3>Empregadoras Existentes</h3>
+            <div >
+                <p>Na concepção jurídica, do direito comercial, atividade empresarial, ou empresa, é uma atividade econômica exercida profissionalmente pelo empresário por meio da articulação dos fatores produtivos para a produção ou circulação de bens ou de serviços</p>
+            </div>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropContratante" class="btn btn-primeira my-3">Ver todas</button>
+            <hr>
             <div class="row">
                 <div class="col-sm-12 col-md-4 my-2 card bg bg-terceira">
+                    <div id="carouselExampleControls01" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="../_img/capa.jpg" class="d-block w-100 my-2 rounded" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../_img/capa.jpg" class="d-block w-100 my-2 rounded" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../_img/capa.jpg" class="d-block w-100 my-2 rounded" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls01" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls01" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                     <h5>Empregadoras Recentes</h5>
-                            
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, nulla. Incidunt temporibus accusantium aliquam eaque, ducimus dolores, est id nobis a sequi molestiae perferendis, praesentium quia obcaecati nisi perspiciatis. Reiciendis.</p>
+                        
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, nulla. Incidunt temporibus accusantium aliquam eaque, ducimus dolores, est id nobis a sequi molestiae perferendis, praesentium quia obcaecati nisi perspiciatis.</p>
 
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropRecentes" class="btn btn-primeira my-3">Ver</button>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropRecentes" class="btn btn-primeira my-3">Ver</button>
                 </div>
                 <div class="col-sm-12 col-md-4 my-2 card bg bg-terceira">
+                    <div id="carouselExampleControls02" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="../_img/capa.jpg" class="d-block w-100 my-2 rounded" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../_img/capa.jpg" class="d-block w-100 my-2 rounded" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../_img/capa.jpg" class="d-block w-100 my-2 rounded" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls02" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls02" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                     <h5>Empregadoras em espera</h5>
 
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos aut vel molestias enim? Vitae voluptas rem hic ut ipsa recusandae excepturi voluptatibus architecto doloribus aut suscipit quisquam, eaque sunt sint!</p>
@@ -114,6 +126,27 @@
                     <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdropEspera" class="btn btn-primeira my-3">Ver</button>
                 </div>
                 <div class="col-sm-12 col-md-4 my-2 card bg bg-terceira">
+                    <div id="carouselExampleControls03" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="../_img/capa.jpg" class="d-block w-100 my-2 rounded" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../_img/capa.jpg" class="d-block w-100 my-2 rounded" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../_img/capa.jpg" class="d-block w-100 my-2 rounded" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls03" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls03" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                     <h5>Empregadoras contratadas</h5>
 
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos aut vel molestias enim? Vitae voluptas rem hic ut ipsa recusandae excepturi voluptatibus architecto doloribus aut suscipit quisquam, eaque sunt sint!</p>
@@ -136,7 +169,7 @@
                 <div class="modal-body card-body">
                     <div class="row text-justyfi">
                         <?php
-                            $consultar_empregos = mysqli_query($conexao, "SELECT * FROM vaga AS V INNER JOIN empregadora AS E ON V.cod_empregadora = E.id_empregadora");
+                            $consultar_empregos = mysqli_query($conexao, "SELECT * FROM vaga AS V INNER JOIN empregadora AS E ON V.cod_empregadora = E.id_empregadora ORDER BY (E.nome)");
                             if(mysqli_num_rows($consultar_empregos) > 0) {
                                 while($emprego = mysqli_fetch_array($consultar_empregos)) {
                         ?>
@@ -175,11 +208,11 @@
                 </div>
                 <div class="modal-body row card-body">
                     <?php
-                        $consultar_empregos = mysqli_query($conexao, "SELECT * FROM empregadora AS E WHERE (E.status = 0)");
+                        $consultar_empregos = mysqli_query($conexao, "SELECT * FROM empregadora AS E WHERE (E.status = 0) ORDER BY nome");
                         if(mysqli_num_rows($consultar_empregos) > 0) {
                             while($emprego = mysqli_fetch_array($consultar_empregos)) {
                     ?>
-                    <div class="col-sm-12 col-md-4 my-3 mx-2 card bg bg-terceira">
+                    <div class="col-sm-12 col-md-3 my-3 mx-2 card bg bg-terceira">
                         <p><strong>Empregadora: </strong><?php echo $emprego['nome']; ?></p>
                         <p><strong>Area de actuação: </strong><?php echo $emprego['area_actuacao']; ?></p>
                         <p><strong>Descrição: </strong><?php echo $emprego['descricao']; ?></p>
@@ -210,11 +243,11 @@
                 </div>
                 <div class="modal-body row card-body">
                     <?php
-                        $consultar_empregos = mysqli_query($conexao, "SELECT * FROM empregadora WHERE (autorizacao is null)");
+                        $consultar_empregos = mysqli_query($conexao, "SELECT * FROM empregadora WHERE (autorizacao is null) ORDER BY nome");
                         if(mysqli_num_rows($consultar_empregos) > 0) {
                             while($emprego = mysqli_fetch_array($consultar_empregos)) {
                     ?>
-                    <div class="col-sm-12 col-md-4 my-3 mx-2 card bg bg-terceira">
+                    <div class="col-sm-12 col-md-3 my-3 mx-2 card bg bg-terceira">
                         <p><strong>Empregadora: </strong><?php echo $emprego['nome']; ?></p>
                         <p><strong>Area de actuação: </strong><?php echo $emprego['area_actuacao']; ?></p>
                         <p><strong>Descrição: </strong><?php echo $emprego['descricao']; ?></p>
@@ -244,11 +277,11 @@
                 </div>
                 <div class="modal-body row card-body">
                     <?php
-                        $consultar_empregos = mysqli_query($conexao, "SELECT * FROM empregadora WHERE (autorizacao > 0)");
+                        $consultar_empregos = mysqli_query($conexao, "SELECT * FROM empregadora WHERE (autorizacao > 0) ORDER BY nome");
                         if(mysqli_num_rows($consultar_empregos) > 0) {
                             while($emprego = mysqli_fetch_array($consultar_empregos)) {
                     ?>
-                    <div class="col-sm-12 col-md-4 my-3 mx-2 card bg bg-terceira">
+                    <div class="col-sm-12 col-md-3 my-3 mx-2 card bg bg-terceira">
                         <p><strong>Empregadora: </strong><?php echo $emprego['nome']; ?></p>
                         <p><strong>Número de vagas: </strong><?php echo $emprego['vagas_disponiveis']; ?></p>
                         <p><strong>Data da assinatura: </strong><?php echo $emprego['data_contrato']; ?></p>
