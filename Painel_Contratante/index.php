@@ -156,9 +156,10 @@
             </div>
         </div>
     </main>
+
     <!-- Modal Empregadoras Contratante -->
     <div class="modal fade" id="staticBackdropContratante" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen-xxl-down">
+        <div class="modal-dialog modal-fullscreen">
             <div class="modal-content">
                 <div class="modal-header bg bg-primeira text-white">
                     <?php  $consult_empregadora = mysqli_query($conexao, "SELECT COUNT(id_empregadora) AS cont_empregadoras FROM empregadora");
@@ -198,7 +199,7 @@
 
     <!-- Modal Empregadoras Recentes -->
     <div class="modal fade" id="staticBackdropRecentes" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg bg-primeira text-white">
                     <?php  $consult_empregadora = mysqli_query($conexao, "SELECT COUNT(id_empregadora) AS cont_empregadoras FROM empregadora AS E WHERE (E.status = 0)");
@@ -232,7 +233,7 @@
 
     <!-- Modal Empregadoras Em Espera -->
     <div class="modal fade" id="staticBackdropEspera" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg bg-primeira text-white">
                     <?php  $consult_empregadora = mysqli_query($conexao, "SELECT COUNT(id_empregadora) AS cont_empregadoras FROM empregadora WHERE (autorizacao is null)");
@@ -267,7 +268,7 @@
     
     <!-- Modal Empregadoras Contratadas -->
     <div class="modal fade" id="staticBackdropContratadas" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg bg-primeira text-white">
                  <?php  $consult_empregadora = mysqli_query($conexao, "SELECT COUNT(id_empregadora) AS cont_empregadoras FROM empregadora WHERE (autorizacao > 0)"); $num_empregadoras = mysqli_fetch_array($consult_empregadora);?>
