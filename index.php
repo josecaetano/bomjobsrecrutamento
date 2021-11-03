@@ -93,7 +93,7 @@
                     <div class="modal-body card-body">
                         <div class="row text-justyfi">
                             <?php
-                                $consultar_empregos = mysqli_query($conexao, "SELECT * FROM vaga AS V INNER JOIN empregadora AS E ON V.cod_empregadora = E.id_empregadora LIMIT 6");
+                                $consultar_empregos = mysqli_query($conexao, "SELECT * FROM vaga AS V INNER JOIN empregadora AS E ON V.cod_empregadora = E.id_empregadora LIMIT 12");
                                 if(mysqli_num_rows($consultar_empregos) > 0) {
                                     while($emprego = mysqli_fetch_array($consultar_empregos)) {
                             ?>
@@ -114,7 +114,10 @@
                         </div>
                     </div>
                     <div class="modal-footer bg-primeira">
+                        <?php  $consult_empregadora = mysqli_query($conexao, "SELECT COUNT(id_empregadora) AS cont_empregadoras FROM empregadora AS E WHERE (E.status = 0)");
+                        $num_empregadoras = mysqli_fetch_array($consult_empregadora);?>
                         <p class="text-white">Precisa ser <strong>cadastrado</strong> para candidatar-se a uma vaga de emprego!</p>
+                        <p class="text-white"><strong>Total: </strong><?php echo $num_empregadoras['cont_empregadoras']; ?></p>
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
                     </div>
                 </div>
